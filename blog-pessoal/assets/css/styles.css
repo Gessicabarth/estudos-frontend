@@ -1,0 +1,139 @@
+/* Importando fontes do Google Fonts */
+
+
+
+
+/* Reset básico para remover margens e espaçamentos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+:root {
+    --cor-background: repeating-linear-gradient(to bottom, #C599B6, #E6B2BA, #FAD0C4); /* Gradiente de fundo com repetição sutil */
+    --cor-titulo: #E6B2BA; /* Cor do título */
+    --cor-texto: #321c0f; /* Cor do texto */
+    --cor-background-menu: rgba(255, 248, 246, 0.9); /* Cor de fundo do menu */
+    --cor-texto-menu: #2A0405; /* Cor do texto do menu */
+    --cor-background-menu-selecao: #C599B6; /* Cor dos fundo do menu selecionado */
+    /* --menu-active: #321c0f; Cor do texto do menu ativo no cabeçalho
+    --icon-color: #A28C14; Cor dos ícones decorativos */
+    --cor-rodape-background: rgba(255, 248, 246, 0.9); /* Cor de fundo do rodapé */
+    --cor-texto-rodape: #321c0f; /* Cor do texto do rodapé */
+}
+
+
+/* Garantindo que o gradiente cubra toda a página */
+html {
+    height: 100%; /* Garante que o gradiente cubra toda a altura */
+    background: var(--cor-background); /* Aplica o gradiente */
+    background-attachment: fixed;  /* Faz o gradiente permanecer fixo ao rolar */
+    background-size: cover; /* Faz o gradiente cobrir toda a tela */
+}
+
+
+footer {
+    color: var(--cor-rodape-background);
+    background: linear-gradient(to right, #E6B2BA, #5A2A27, #E6B2BA); /* Gradiente de fundo do rodapé */
+    font-family: 'Lobster', cursive; /* Fonte Lobster para o rodapé */
+    border-top: 1px solid rgba(255, 248, 246, 0.9); /* Define a linha dourada diretamente */
+    padding: 12px;
+    text-align: center;
+    position: fixed;
+    font-size: 0.8em;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
+
+
+#feixes-de-luz {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden; /* Garante que os brilhos não ativem barras de rolagem */
+}
+
+.luz {
+    position: absolute;
+    width: 13px; /* Tamanho do brilho */
+    height: 13px;
+    background-image: url('../icons/brilho.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0.6;
+    animation: float 30s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(-10px, -20px) scale(1.1);
+    }
+    50% {
+        transform: translate(20px, 10px) scale(0.9);
+    }
+    75% {
+        transform: translate(-15px, 15px) scale(1.05);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* --- Estilo do Botão --- */
+.botao-tema {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px 15px;
+    background-color: var(--cor-background-menu-selecao);
+    color: var(--cor-texto-menu);
+    border: 2px solid var(--cor-titulo);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botao-tema:hover {
+    background-color: var(--cor-background-menu);
+    
+}
+
+/* --- A Mágica do Modo Escuro --- */
+/* Quando a tag <body> ganhar a classe .dark-mode, estas cores substituem as do :root */
+html.dark-mode {
+    --cor-background: repeating-linear-gradient(to bottom, #1A0B2E, #2D143D, #4A1C40); /* Degradê roxo escuro */
+    --cor-titulo: #FAD0C4; /* Pêssego clarinho do seu degrade original para contraste */
+    --cor-texto: #FDE8E9; /* Quase branco, para leitura agradável */
+    --cor-background-menu: rgba(20, 10, 30, 0.9); /* Fundo escuro transparente */
+    --cor-texto-menu: #FAD0C4; 
+    --cor-background-menu-selecao: #5A2A27; /* Um tom de vinho mais fechado */
+    --cor-rodape-background: rgba(20, 10, 30, 0.9);
+    --cor-texto-rodape: #FDE8E9;
+}
+
+/* --- Rodapé no Modo Escuro --- */
+html.dark-mode footer {
+    /* Degradê noturno: do grafite para o roxo escuro no meio, e voltando pro grafite */
+    background: linear-gradient(to right, #07070A, #2A1B38, #07070A);
+    
+    /* Puxa a cor clarinha do texto para dar leitura */
+    color: var(--cor-texto-rodape);
+    
+    /* Troca a bordinha branca por uma linha roxa bem charmosa */
+    border-top: 1px solid #4A2545; 
+}
